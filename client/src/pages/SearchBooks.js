@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SAVE_BOOK } from '../utils/mutations';
+import { SAVE_BOOK } from '../utils/mutations.js';
 import { useMutation} from "@apollo/react-hooks";
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
@@ -54,7 +54,6 @@ const SearchBooks = () => {
       setSearchedBooks(bookData);
       setSearchInput('');
     } catch (err) {
-      console.error(err);
     }
   };
 
@@ -117,6 +116,7 @@ const SearchBooks = () => {
         </h2>
         <CardColumns>
           {searchedBooks.map((book) => {
+
             return (
               <Card key={book.bookId} border='dark'>
                 {book.image ? (
@@ -126,8 +126,8 @@ const SearchBooks = () => {
                   <Card.Title>{book.title}</Card.Title>
                   <p className='small'>Authors: {book.authors}</p>
                   <p className='small'>Link: <a href={book.link} target="_blank" rel="noopener noreferrer">{book.link}</a></p>
-
                   <Card.Text>{book.description}</Card.Text>
+                  
                   {Auth.loggedIn() && (
                     
                     <Button
