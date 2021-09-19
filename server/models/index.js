@@ -1,3 +1,5 @@
 const User = require('./User');
+const User = require('./bookSchema');
 
-module.exports = { User };
+
+module.exports = { User, bookSchema };
