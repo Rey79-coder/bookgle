@@ -125,16 +125,21 @@ const SearchBooks = () => {
                 <Card.Body>
                   <Card.Title>{book.title}</Card.Title>
                   <p className='small'>Authors: {book.authors}</p>
+                  <p className='small'>Link: <a href={book.link} target="_blank" rel="noopener noreferrer">{book.link}</a></p>
+
                   <Card.Text>{book.description}</Card.Text>
                   {Auth.loggedIn() && (
+                    
                     <Button
-                      disabled={savedBookIds?.some((savedBookId) => savedBookId === book.bookId)}
-                      className='btn-block btn-info'
-                      onClick={() => handleSaveBook(book.bookId)}>
-                      {savedBookIds?.some((savedBookId) => savedBookId === book.bookId)
-                        ? 'This book has already been saved!'
-                        : 'Save this Book!'}
-                    </Button>
+                    disabled={savedBookIds?.some((savedBookId) => savedBookId === book.bookId)}
+                    className='btn-block btn-info'
+                    onClick={() => handleSaveBook(book.bookId)}>
+                    {savedBookIds?.some((savedBookId) => savedBookId === book.bookId)
+                      ? 'This book has been saved!'
+                      : 'Save this Book!'}
+                  </Button>
+
+
                   )}
                 </Card.Body>
                 {error && <div> Something went wrong...</div>}
